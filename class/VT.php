@@ -48,7 +48,14 @@ class VT{
 			return false;
 		}
 	}
-
+public function FunctionName(Type $var = null)
+{
+	# code...
+}
+public function FunctionName2(Type $var = null)
+{
+	# code...
+}
 	public function SorguCalistir($tablo,$alanlar="",$degerlerarray="",$limit=""){
 		$this->baglanti->query("SET CHARACTER SET utf8");
 		if(!empty($alanlar) && !empty($degerlerarray)){
