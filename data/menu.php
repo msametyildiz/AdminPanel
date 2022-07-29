@@ -61,7 +61,7 @@
                     for($i=0;$i<count($moduller);$i++){
                       ?>
                       <li class="nav-item">
-                          <a href="<?=SITE?>index.php?sayfa=liste&<?=$moduller[$i]["tablo"]?>" class="nav-link">
+                          <a href="<?=SITE?>index.php?sayfa=liste&tablo=<?=$moduller[$i]["tablo"]?>" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p><?=$moduller[$i]["baslik"]?></p>
                           </a>

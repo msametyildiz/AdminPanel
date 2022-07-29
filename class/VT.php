@@ -133,6 +133,13 @@ class VT{
 		}
 	}
 
+	/*sql injection a  ve özel karakterlere karşı koruma */
+	public function filter($val,$tf=false){
+		if($tf==false){$val=strip_tags($val);}
+		$val=addslashes(trim($val));/* trim =sağda ve solda boşluklar varsa temizliyorum */
+		return $val;
+	}
+
 }
 
 

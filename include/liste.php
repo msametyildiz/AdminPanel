@@ -1,16 +1,12 @@
 <?php 
-    if(!empty($_GET["tablo"])){
-        $tablo=$_GET["tablo"];
-        $kontrol=$VT->VeriGetir("moduller","WHERE tablo=? AND durum=?",array($tablo,1),"ORDER BY ID ASC",1);
-        if($kontrol!=false){
-
-        }
-    }
-
-?> 
+  if(!empty($_GET["tablo"])){
+    $tablo=$VT->filter($_GET["tablo"]);
+    $kontrol=$VT->VeriGetir("moduller","WHERE tablo=? AND durum=?",array($tablo,1),"ORDER BY ID ASC",1);
+    if($kontrol!=false){
+?>
 
 
- <div class="content-wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -20,7 +16,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?=SITE?>">Anasayfa</a></li>
+              <li class="breadcrumb-item"><a href="#">?<?=  SITE?></a></li>
               <li class="breadcrumb-item active"><?=$kontrol[0]["baslik"]?></li>
             </ol>
           </div><!-- /.col -->
@@ -37,7 +33,20 @@
     </section>
     <!-- /.content -->
   </div>
+  
+  
+  <?php
+  }
+    else{
+      ?>
+      <meta http-equiv="refresh" content="0;url=<?=SITE?>">
+      <?php
 
-<?php 
-    
-?>
+    }
+  }
+else{
+    ?>
+      <meta http-equiv="refresh" content="0;url=<?=SITE?>">
+      <?php
+  }
+  ?>
