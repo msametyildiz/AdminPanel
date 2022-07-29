@@ -1,13 +1,13 @@
 <?php 
 include_once(SINIF."VT.php");
 $VT=new VT();
-$ayarlar=$VT->VeriGetir("settings","WHERE ID=?",array(1),"ORDER BY ID ASC","1");
+$ayarlar=$VT->VeriGetir("ayarlar","WHERE ID=?",array(1),"ORDER BY ID ASC",1);
 
 if ($ayarlar!=false) {
-	$sitebaslik=$settings["baslik"] ?? null;
-	$siteanahtar=$settings["anahtarkelime"] ?? null;
-	$siteaciklama=$settings["aciklama"] ?? null;
-	$siteURL=$settings["url"] ?? null;
+	$sitebaslik=$ayarlar[0]["baslik"] ;
+	$siteanahtar=$ayarlar[0]["anahtarkelime"] ;
+	$siteaciklama=$ayarlar[0]["aciklama"] ;
+	$siteURL=$ayarlar[0]["url"];
 }
 
 ?>

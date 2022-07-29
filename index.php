@@ -5,8 +5,7 @@ define("DATA","data/");
 define("SAYFA","include/");
 define("SINIF","class/");
 include_once(DATA."baglanti.php");
-define("SITE", "$siteURL");
-
+define("SITE", $siteURL);
 ?>
 
 

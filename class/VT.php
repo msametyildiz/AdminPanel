@@ -22,20 +22,20 @@ class VT{
 	//--------------------------------------------------------------------------------------------------------------------------------------
 
 	// select * FROM ayarlar WHERE ID=1 ORDER BY ID ASC LIMIT 1
-	public function VeriGetir($tablo , $wherealanlar="",$wherearraydeger="",$orderby="ORDER BY ID ASC",$limit=""){
+	public function VeriGetir($tablo , $wherealanlar="",$wherearraydeger="",$ordeby="ORDER BY ID ASC",$limit=""){
 
 		$this->baglanti->query("SET CHARACTER SET utf8");
 		$sql="SELECT * FROM ".$tablo;
 		if(!empty($wherealanlar) && !empty($wherearraydeger)){
 			$sql.=" ".$wherealanlar;
-			if(!empty($orderby)){$sql.=" ".$orderby;}
+			if(!empty($ordeby)){$sql.=" ".$ordeby;}
 			if(!empty($limit)){$sql.=" LIMIT ".$limit;}
 			$calistir=$this->baglanti->prepare($sql);
 			$sonuc=$calistir->execute($wherearraydeger); // TODO
 			$veri=$calistir->fetchAll (PDO::FETCH_ASSOC);
 		}
 		else {
-			if(!empty($orderby)){$sql.=" ".$orderby;}
+			if(!empty($ordeby)){$sql.=" ".$ordeby;}
 			if(!empty($limit)){$sql.=" LIMIT ".$limit;}
 			$veri=$this->baglanti->query($sql,PDO::FETCH_ASSOC);
 		}
