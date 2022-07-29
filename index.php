@@ -42,6 +42,9 @@ define("SITE", $siteURL);
   <link rel="stylesheet" href="<?=SITE?>plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="<?=SITE?>plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="<?=SITE?>plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="<?=SITE?>plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="<?=SITE?>plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -127,6 +130,8 @@ include_once(DATA."footer.php");
 <script src="<?=SITE?>plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="<?=SITE?>plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="<?=SITE?>plugins/datatables-buttons/js/buttons.colVis.min.js"></script> 
+<!-- Select2 -->
+<script src="../../plugins/select2/js/select2.full.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?=SITE?>dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -147,6 +152,17 @@ include_once(DATA."footer.php");
       "responsive": true,
     });
   });
+</script>
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })  
+  }) 
 </script>
 
 </body>

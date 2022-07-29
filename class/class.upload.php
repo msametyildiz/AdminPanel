@@ -3211,7 +3211,9 @@ class upload {
      * @return integer Size in bytes
      */
     function getsize($size) {
-        $last = strtolower($size{strlen($size)-1});
+        if ($size === null) return null;
+        $last = is_string($size) ? strtolower(substr($size, -1)) : null;
+        $size = (int) $size;
         switch($last) {
             case 'g':
                 $size *= 1024;
