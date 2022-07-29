@@ -22,7 +22,7 @@
       <div class="container-fluid">
         <?php
           if($_POST){
-            $calistir=$VT->ModulEkle();
+            $calistir=$VT->ModulEkle(); // TODO
            
             if($calistir!=false){
               echo '<div class="alert alert-success">Modülünüz basarıyla eklenmiştir.</div>';

@@ -16,7 +16,7 @@ define("SITE", "$siteURL");
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?=$sitebaslik ?></title>
+  <title><?=$sitebaslik?></title>
   <meta http-equiv="keywords" content="<?=$siteanahtar?>">
   <meta http-equiv="description" content="<?=$siteaciklama?>">
   <!-- Google Font: Source Sans Pro -->
@@ -52,9 +52,9 @@ define("SITE", "$siteURL");
 include_once(DATA."ust.php");
 include_once(DATA."menu.php");
 if($_GET && !empty($_GET["sayfa"])){
-  $sayfa=$_GET["sayfa"].".php";//ornek.php olacak ornek dediğimiz için
+  $sayfa=$_GET["sayfa"].".php";//ornek.php olacak ornek dediğimiz için  
   if(file_exists(SAYFA.$sayfa)){
-    include_once(SAYFA.$sayfa);
+    include_once(SAYFA.$sayfa); // tODO
   }
   else{
     include_once(SAYFA."home.php");
