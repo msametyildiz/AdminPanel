@@ -38,6 +38,10 @@ define("SITE", $siteURL);
   <link rel="stylesheet" href="<?=SITE?>plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="<?=SITE?>plugins/summernote/summernote-bs4.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="<?=SITE?>plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?=SITE?>plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?=SITE?>plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -110,9 +114,40 @@ include_once(DATA."footer.php");
 <script src="<?=SITE?>plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?=SITE?>dist/js/adminlte.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="<?=SITE?>plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?=SITE?>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?=SITE?>plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?=SITE?>plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="<?=SITE?>plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="<?=SITE?>plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="<?=SITE?>plugins/jszip/jszip.min.js"></script>
+<script src="<?=SITE?>plugins/pdfmake/pdfmake.min.js"></script>
+<script src="<?=SITE?>plugins/pdfmake/vfs_fonts.js"></script>
+<script src="<?=SITE?>plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="<?=SITE?>plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="<?=SITE?>plugins/datatables-buttons/js/buttons.colVis.min.js"></script> 
 <!-- AdminLTE for demo purposes -->
 <script src="<?=SITE?>dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?=SITE?>dist/js/pages/dashboard.js"></script>
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+
 </body>
 </html>
