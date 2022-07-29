@@ -117,7 +117,7 @@ class VT{
 
 
 				$ModulEkle=$this->SorguCalistir("INSERT INTO moduller","SET baslik=?, tablo=?, durum=?, tarih=?",array($baslik,$tablo,$durum,date("y-m-d")));
-				//$kategoriekle=$this->SorguCalistir("INSERT INTO kategoriler","SET baslik=?, selflink=? ,tablo=?, durum=?, tarih=?",array($baslik,$tablo,'modul',1,date("y-m-d")));
+				$kategoriekle=$this->SorguCalistir("INSERT INTO kategoriler","SET baslik=?, selflink=? ,tablo=?, durum=?, tarih=?",array($baslik,$tablo,'modul',1,date("y-m-d")));
 				if($ModulEkle!=false){
 					return true;
 					header("Refresh:0");
