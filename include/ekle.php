@@ -26,15 +26,16 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-          <a href="<?=SITE?>ekle/<?=$kontrol[0]["tablo"]?>" class="btn btn-success" style="float:right; margin-bottom=10px;"><i class="fa fa-plus"></i>YENİ EKLE</a>
+      <section class="content">
+        <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="<?=SITE?>ekle/<?=$kontrol[0]["tablo"]?>" class="btn btn-success" style="float:right; margin-bottom=10px;"><i class="fa fa-plus"></i>YENİ EKLE</a>
+        </div>
       </div>
-    </div>
 
-    <div class="card card-default">
+<!-- SELECT2 EXAMPLE -->
+        <div class="card card-default">
           <div class="card-header">
             <h3 class="card-title">Select2 (Default Theme)</h3>
 
@@ -47,118 +48,73 @@
               </button>
             </div>
           </div>
-          <!-- /.card-header -->
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Minimal</label>
-                  <select class="form-control select2" style="width: 100%;">
-                    <option selected="selected">Alabama</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
-                <div class="form-group">
-                  <label>Disabled</label>
-                  <select class="form-control select2" disabled="disabled" style="width: 100%;">
-                    <option selected="selected">Alabama</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Multiple</label>
-                  <select class="select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
-                    <option>Alabama</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
-                <div class="form-group">
-                  <label>Disabled Result</label>
-                  <select class="form-control select2" style="width: 100%;">
-                    <option selected="selected">Alabama</option>
-                    <option>Alaska</option>
-                    <option disabled="disabled">California (disabled)</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
-            </div>
-            <!-- /.row -->
-
-            <h5>Custom Color Variants</h5>
-            <div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
-                  <label>Minimal (.select2-danger)</label>
-                  <select class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                    <option selected="selected">Alabama</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
-                  <label>Multiple (.select2-purple)</label>
-                  <div class="select2-purple">
-                    <select class="select2" multiple="multiple" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;">
-                      <option>Alabama</option>
-                      <option>Alaska</option>
-                      <option>California</option>
-                      <option>Delaware</option>
-                      <option>Tennessee</option>
-                      <option>Texas</option>
-                      <option>Washington</option>
-                    </select>
+            <form action="#" method="post" enctype="multipart/form-data">
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Kategori Seç</label>
+                      <select class="form-control select2" style="width: 100%;">
+                        <option selected="selected">Alabama</option>
+                        <option>Alaska</option>
+                        <option>California</option>
+                        <option>Delaware</option>
+                        <option>Tennessee</option>
+                        <option>Texas</option>
+                        <option>Washington</option>
+                      </select>
                   </div>
+                  <!-- /.col -->   
                 </div>
-                <!-- /.form-group -->
+
+                <!-- header in form -->
+                <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Başlık</label>
+                      <input type="text" class="form-control" placeholder="Başlık ..." name="baslik">
+                    </div>
+                </div>
+                <!-- Text area-->
+                <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Açıklama</label>
+                      <textarea id="summernote" name="metin" placeholder="  Text Area  " style="width:100%; height:450px; line-height:18px; font-size:14px; border:1px solid #dddddd; padding:10px;"></textarea>
+                    </div>
+                </div>
+                 <!--keywords  -->
+                <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Anahtar Kelimeler</label>
+                      <input type="text" class="form-control" placeholder="Anahtar Kelimeler ..." name="anahtar">
+                    </div>
+                </div>
+                <!--description  -->
+                <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Description</label>
+                      <input type="text" class="form-control" placeholder="Description ..." name="description">
+                    </div>
+                </div>
+                <!--pictures  -->
+                <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Resimler</label>
+                      <input type="file" class="form-control" placeholder="Resim Seçiniz ..." name="resim">
+                    </div>
+                </div>
+                <!--Serial no  -->
+                <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Sıra no</label>
+                      <input type="number" class="form-control" placeholder="Sıra No ..." name="sırano">
+                    </div>
+                </div>
+
+                <!-- /.row -->
               </div>
-              <!-- /.col -->
-            </div>
-            <!-- /.row -->
-          </div>
-          <!-- /.card-body -->
-          <div class="card-footer">
-            Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-            the plugin.
-          </div>
-        </div>
-        <!-- /.card -->
-
-
+              <!-- /.card-body -->
+          </form>
 
       </div><!-- /.container-fluid -->
     </section>

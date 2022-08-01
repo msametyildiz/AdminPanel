@@ -131,11 +131,27 @@ include_once(DATA."footer.php");
 <script src="<?=SITE?>plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="<?=SITE?>plugins/datatables-buttons/js/buttons.colVis.min.js"></script> 
 <!-- Select2 -->
-<script src="../../plugins/select2/js/select2.full.min.js"></script>
+<script src="<?=SITE?>plugins/select2/js/select2.full.min.js"></script>,
+<!-- summernote -->
+<link rel="stylesheet" href="<?=SITE?>plugins/summernote/summernote-bs4.min.css">
 <!-- AdminLTE for demo purposes -->
 <script src="<?=SITE?>dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?=SITE?>dist/js/pages/dashboard.js"></script>
+<!-- Summernote -->
+<script src="<?=SITE?>plugins/summernote/summernote-bs4.min.js"></script>
+<script>
+  $(function () {
+    // Summernote
+    $('#summernote').summernote()
+
+    // CodeMirror
+    CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+      mode: "htmlmixed",
+      theme: "monokai"
+    });
+  })
+</script>
 <script>
   $(function () {
     $("#example1").DataTable({
@@ -164,6 +180,8 @@ include_once(DATA."footer.php");
     })  
   }) 
 </script>
+
+
 
 </body>
 </html>
