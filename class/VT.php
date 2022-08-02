@@ -132,7 +132,7 @@ class VT{
 			return false;
 		}
 	}
-
+//--------------------------------------------------------------------------------------------------------------------------------------
 	/*sql injection a  ve özel karakterlere karşı koruma */
 	public function filter($val,$tf=false){
 		if($tf==false){$val=strip_tags($val);}
@@ -257,6 +257,7 @@ class VT{
 		}
 	}
 
+	//--------------------------------------------------------------------------------------------------------------------------------------
 	public function kategoriGetir($tablo, $secID="",$uz=-1){
 		$uz+1;
 		$kategori=$this->VeriGetir("kategoriler","WHERE tablo=?", array($tablo),"ORDER BY ID ASC");
@@ -279,7 +280,7 @@ class VT{
 		}
 	}
 
-
+//--------------------------------------------------------------------------------------------------------------------------------------
 	public function tekKategori($tablo, $secID="",$uz=-1){
 		$uz++;
 		$kategori=$this->VeriGetir("kategoriler","WHERE seflink=? AND tablo=?", array($tablo,"modul"),"ORDER BY ID ASC");
