@@ -263,7 +263,7 @@ class VT{
 		$kategori=$this->VeriGetir("kategoriler","WHERE tablo=?", array($tablo),"ORDER BY ID ASC");
 		if($kategori!=false){
 			for($q=0;$q<count($kategori);$q++){
-				$kategoriseflink=$kategori[$q]["seflink"];
+				$kategoriseflink=$kategori[$q]["selflink"];
 				$kategoriseflink=$kategori[$q]["ID"];
 				if($secID==$kategoriID){
 					echo '<option value="'.$kategoriID.'" selected="selected>'.str_repeat("&nbsp;&nbsp;&nbsp;",$uz).stripslashes($kategori[$q]["baslik"]).'</option>';
@@ -283,10 +283,10 @@ class VT{
 //--------------------------------------------------------------------------------------------------------------------------------------
 	public function tekKategori($tablo, $secID="",$uz=-1){
 		$uz++;
-		$kategori=$this->VeriGetir("kategoriler","WHERE seflink=? AND tablo=?", array($tablo,"modul"),"ORDER BY ID ASC");
+		$kategori=$this->VeriGetir("kategoriler","WHERE selflink=? AND tablo=?", array($tablo,"modul"),"ORDER BY ID ASC");
 		if($kategori!=false){
 			for($q=0;$q<count($kategori);$q++){
-				$kategoriseflink=$kategori[$q]["seflink"];
+				$kategoriseflink=$kategori[$q]["selflink"];
 				$kategoriID=$kategori[$q]["ID"];
 				if($secID==$kategoriID){
 					echo '<option value="'.$kategoriID.'" selected="selected">'.str_repeat("&nbsp;&nbsp;&nbsp;",$uz).stripslashes($kategori[$q]["baslik"]).'</option>';
