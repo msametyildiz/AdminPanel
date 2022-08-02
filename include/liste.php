@@ -16,7 +16,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">?<?=  SITE?></a></li>
+              <li class="breadcrumb-item"><a href="#"><?=SITE?></a></li>
               <li class="breadcrumb-item active"><?=$kontrol[0]["baslik"]?></li>
             </ol>
           </div><!-- /.col -->
