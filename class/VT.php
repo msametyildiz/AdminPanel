@@ -257,7 +257,49 @@ class VT{
 		}
 	}
 
+	public function kategoriGetir($tablo, $secID="",$uz=-1){
+		$uz+1;
+		$kategori=$this->VeriGetir("kategoriler","WHERE tablo=?", array($tablo),"ORDER BY ID ASC");
+		if($kategori!=false){
+			for($q=0;$q<count($kategori);$q++){
+				$kategoriseflink=$kategori[$q]["seflink"];
+				$kategoriseflink=$kategori[$q]["ID"];
+				if($secID==$kategoriID){
+					echo '<option value="'.$kategoriID.'" selected="selected>'.str_repeat("&nbsp;&nbsp;&nbsp;",$uz).stripslashes($kategori[$q]["baslik"]).'</option>';
+				}
+				else{
+					echo '<option value="'.$kategoriID.'" >'.str_repeat("&nbsp;&nbsp;&nbsp;",$uz).stripslashes($kategori[$q]["baslik"]).'</option>';
+				}
+				if($kategoriseflink==$tablo){break;}
+				$this->kategoriGetir($kategoriseflink,$secID,$uz);
+			}
+		}
+		else{
+			return false;
+		}
+	}
+
+
+	public function tekKategori($tablo, $secID="",$uz=-1){
+		$uz++;
+		$kategori=$this->VeriGetir("kategoriler","WHERE seflink=? AND tablo=?", array($tablo,"modul"),"ORDER BY ID ASC");
+		if($kategori!=false){
+			for($q=0;$q<count($kategori);$q++){
+				$kategoriseflink=$kategori[$q]["seflink"];
+				$kategoriID=$kategori[$q]["ID"];
+				if($secID==$kategoriID){
+					echo '<option value="'.$kategoriID.'" selected="selected">'.str_repeat("&nbsp;&nbsp;&nbsp;",$uz).stripslashes($kategori[$q]["baslik"]).'</option>';
+				}
+				else{
+					echo '<option value="'.$kategoriID.'" >'.str_repeat("&nbsp;&nbsp;&nbsp;",$uz).stripslashes($kategori[$q]["baslik"]).'</option>';
+				}
+			}
+		}
+		else{
+			return false;
+		}
+	}
+
+
 }
-
-
 ?>

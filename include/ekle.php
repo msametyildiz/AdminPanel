@@ -28,47 +28,38 @@
     <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-12">
-            <a href="<?=SITE?>ekle/<?=$kontrol[0]["tablo"]?>" class="btn btn-success" style="float:right; margin-bottom=10px;"><i class="fa fa-plus"></i>YENİ EKLE</a>
+          <div class="row">
+            <div class="col-md-12">
+              <a href="<?=SITE?>ekle/<?=$kontrol[0]["tablo"]?>" class="btn btn-success" style="float:right; margin-bottom=10px;"><i class="fa fa-plus"></i>YENİ EKLE</a>
+            </div>
         </div>
-      </div>
+<!----------------------------------------------------------------------------------------------------------------------------------->
 
 <!-- SELECT2 EXAMPLE -->
-        <div class="card card-default">
-          <div class="card-header">
-            <h3 class="card-title">Select2 (Default Theme)</h3>
-
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                <i class="fas fa-minus"></i>
-              </button>
-              <button type="button" class="btn btn-tool" data-card-widget="remove">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-          </div>
-            <form action="#" method="post" enctype="multipart/form-data">
-              <!-- /.card-header -->
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <label>Kategori Seç</label>
-                      <select class="form-control select2" style="width: 100%;">
-                        <option selected="selected">Alabama</option>
-                        <option>Alaska</option>
-                        <option>California</option>
-                        <option>Delaware</option>
-                        <option>Tennessee</option>
-                        <option>Texas</option>
-                        <option>Washington</option>
-                      </select>
-                  </div>
-                  <!-- /.col -->   
+          <!-- /.card-header -->,
+          <form action="#" method="post" enctype="multipart/form-data">
+          <div class="col-md-8">
+          <div class="card-body card card-primary">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Kategori Seç</label>
+                  <select class="form-control select2" style="width: 100%;" name="kategori">
+                    <?php
+                      $sonuc=$VT->kategoriGetir($kontrol[0]["tablo"],"",-1);
+                      if($sonuc!=false){
+                        echo $sonuc;
+                      }
+                      else{
+                        $VT->tekKategori($kontrol[0]["tablo"]);
+                      }
+                    ?>
+                  </select>
                 </div>
+              <!-- /.col -->
+            </div>
 
-                <!-- header in form -->
+            <!-- header in form -->
                 <div class="col-md-12">
                     <div class="form-group">
                       <label>Başlık</label>
@@ -107,14 +98,25 @@
                 <div class="col-md-12">
                     <div class="form-group">
                       <label>Sıra no</label>
-                      <input type="number" class="form-control" placeholder="Sıra No ..." name="sırano">
+                      <input type="number" class="form-control" placeholder="Sıra No ..." name="sırano" style="width:100px;">
                     </div>
                 </div>
-
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-block btn-primary">KAYDET</button>
+                    </div>
+                </div>
                 <!-- /.row -->
-              </div>
-              <!-- /.card-body -->
-          </form>
+
+          </div>
+          <!-- /.card-body -->
+          
+        </div>
+        <!-- /.card --> 
+      </div>
+      </form>
+
+<!----------------------------------------------------------------------------------------------------------------------------------->
 
       </div><!-- /.container-fluid -->
     </section>
