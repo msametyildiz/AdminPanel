@@ -111,7 +111,7 @@ class VT{
 					  `anahtar` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
 					  `description` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
 					  `durum` int(5) DEFAULT NULL,
-					  `sırano` int(11) DEFAULT NULL,
+					  `sirano` int(11) DEFAULT NULL,
 					  `tarih` date DEFAULT NULL
 					) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;');
 
@@ -139,7 +139,7 @@ class VT{
 		$val=addslashes(trim($val));/* trim =sağda ve solda boşluklar varsa temizliyorum */
 		return $val;
 	}
-
+//--------------------------------------------------------------------------------------------------------------------------------------
 	public function upload($nesnename,$yuklenecekyer='images/',$tur='img',$w='',$h='',$resimyazisi='')
 	{
 		if($tur=="img")
