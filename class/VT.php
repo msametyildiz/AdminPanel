@@ -105,7 +105,7 @@ class VT{
 					  `ID` int(11) NOT NULL,
 					  `baslik` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
 					  `selflink` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
-					  `kategori` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
+					  `kategori` int(11) DEFAULT NULL,
 					  `metin` text COLLATE utf8_turkish_ci DEFAULT NULL,
 					  `resim` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
 					  `anahtar` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
@@ -138,6 +138,13 @@ class VT{
 		if($tf==false){$val=strip_tags($val);}
 		$val=addslashes(trim($val));/* trim =sağda ve solda boşluklar varsa temizliyorum */
 		return $val;
+	}
+//--------------------------------------------------------------------------------------------------------------------------------------
+	public function uzanti($dosyaadi){
+		$parca=explode(".",$dosyaadi);
+		$uzanti=end($parca);
+		$donustur=strtolower($uzanti);
+		return $donustur;
 	}
 //--------------------------------------------------------------------------------------------------------------------------------------
 	public function upload($nesnename,$yuklenecekyer='images/',$tur='img',$w='',$h='',$resimyazisi='')
