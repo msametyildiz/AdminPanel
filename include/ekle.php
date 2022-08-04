@@ -46,7 +46,7 @@ if($_POST){
             if(!empty($_FILES["resim"]["name"])){
                   $yukle=$VT->upload("resim","../images/".$kontrol[0]["tablo"]."/");
                   if($yukle!=false){
-                      $ekle=$VT->SorguCalistir("INSERT INTO".$kontrol[0]["tablo"],"SET baslik=?, selflink=?, kategori=?, metin=?, resim=?, anahtar=?, description=?, durum=?,sirano=?,tarih=?",array($baslik,$selflink,$kategori,$metin,$yukle,$anahtar,$description,1,$sirano,date("Y-m-d")));
+                      $ekle=$VT->SorguCalistir("INSERT INTO ".$kontrol[0]["tablo"],"SET baslik=?, selflink=?, kategori=?, metin=?, resim=?, anahtar=?, description=?, durum=?,sirano=?,tarih=?",array($baslik,$selflink,$kategori,$metin,$yukle,$anahtar,$description,1,$sirano,date("Y-m-d")));
                   }
                   else{
                       ?>
@@ -55,17 +55,17 @@ if($_POST){
                   }
               
             }
-            /*else{
+            else{
                   $ekle=$VT->SorguCalistir("INSERT INTO ".$kontrol[0]["tablo"],"SET baslik=?, selflink=?, kategori=?, metin=?, anahtar=?, description=?, durum=?, sirano=?, tarih=?",array($baslik,$selflink,$kategori,$metin,$anahtar,$description,1,$sirano,date("Y-m-d")));
-            }*/
+            }
             if($ekle!=false){
                   ?>
-                    <div class="alert alert-succes">İŞLEMLER BAŞARIYLA KAYDEDİLDİ ...</div>
+                    <div class="alert alert-success">İŞLEMLER BAŞARIYLA KAYDEDİLDİ ...</div>
                   <?php
             }
             else{
                   ?>
-                  <div class="alert alert-succes">! İŞLEM SIRASINDA BİR SORUNLA KARŞILAŞILDI.LÜTFEN DAHA SONRA TEKRAR DENEYİNİZ !</div>
+                  <div class="alert alert-danger">! İŞLEM SIRASINDA BİR SORUNLA KARŞILAŞILDI. LÜTFEN DAHA SONRA TEKRAR DENEYİNİZ !</div>
                   <?php
             }
       }
@@ -87,6 +87,7 @@ if($_POST){
                 <div class="form-group">
                   <label>Kategori Seç</label>
                   <select class="form-control select2" style="width: 100%;" name="kategori">
+                  
                     <?php
                       $sonuc=$VT->kategoriGetir($kontrol[0]["tablo"],"",-1);
                       if($sonuc!=false){
@@ -96,6 +97,7 @@ if($_POST){
                         $VT->tekKategori($kontrol[0]["tablo"]);
                       }
                     ?>
+
                   </select>
                 </div>
               <!-- /.col -->

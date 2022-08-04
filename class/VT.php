@@ -105,7 +105,7 @@ class VT{
 					  `ID` int(11) NOT NULL,
 					  `baslik` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
 					  `selflink` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
-					  `katagori` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
+					  `kategori` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
 					  `metin` text COLLATE utf8_turkish_ci DEFAULT NULL,
 					  `resim` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
 					  `anahtar` varchar(255) COLLATE utf8_turkish_ci DEFAULT NULL,
@@ -258,7 +258,7 @@ class VT{
 	}
 
 	//--------------------------------------------------------------------------------------------------------------------------------------
-	public function kategoriGetir($tablo, $secID="",$uz=-1){
+	public function kategoriGetir($tablo,$secID="",$uz=-1){
 		$uz+1;
 		$kategori=$this->VeriGetir("kategoriler","WHERE tablo=?", array($tablo),"ORDER BY ID ASC");
 		if($kategori!=false){
@@ -266,7 +266,7 @@ class VT{
 				$kategoriseflink=$kategori[$q]["selflink"];
 				$kategoriseflink=$kategori[$q]["ID"];
 				if($secID==$kategoriID){
-					echo '<option value="'.$kategoriID.'" selected="selected>'.str_repeat("&nbsp;&nbsp;&nbsp;",$uz).stripslashes($kategori[$q]["baslik"]).'</option>';
+					echo '<option value="'.$kategoriID.'" selected="selected">'.str_repeat("&nbsp;&nbsp;&nbsp;",$uz).stripslashes($kategori[$q]["baslik"]).'</option>';
 				}
 				else{
 					echo '<option value="'.$kategoriID.'" >'.str_repeat("&nbsp;&nbsp;&nbsp;",$uz).stripslashes($kategori[$q]["baslik"]).'</option>';
@@ -300,6 +300,9 @@ class VT{
 			return false;
 		}
 	}
+
+
+ 
 
 
 }
