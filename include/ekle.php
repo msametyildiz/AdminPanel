@@ -16,7 +16,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">?<?=  SITE?></a></li>
+              <li class="breadcrumb-item"><a href="#"><?=SITE?></a></li>
               <li class="breadcrumb-item active"><?=$kontrol[0]["baslik"]?></li>
             </ol>
           </div><!-- /.col -->
@@ -29,8 +29,9 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
-              <a href="<?=SITE?>ekle/<?=$kontrol[0]["tablo"]?>" class="btn btn-success" style="float:right; margin-bottom=10px;"><i class="fa fa-plus"></i>YENİ EKLE</a>
-            </div>
+              <a href="<?=SITE?>liste/<?=$kontrol[0]["tablo"]?>" class="btn btn-info" style="float:right; margin-bottom=10px; margin-left:10px;"><i class="fa fa-bars"></i> LİSTE</a>
+              <a href="<?=SITE?>ekle/<?=$kontrol[0]["tablo"]?>" class="btn btn-success" style="float:right; margin-bottom=10px;"><i class="fa fa-plus"></i> YENİ EKLE</a>
+ </div>
         </div>
 <!----------------------------------------------------------------------------------------------------------------------------------->
 <?php 

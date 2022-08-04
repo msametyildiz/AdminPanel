@@ -58,13 +58,14 @@ define("SITE", $siteURL);
 include_once(DATA."ust.php");
 include_once(DATA."menu.php");
 if($_GET && !empty($_GET["sayfa"])){
-  $sayfa=$_GET["sayfa"].".php";//ornek.php olacak ornek dediğimiz için  
-  if(file_exists(SAYFA.$sayfa)){
-    include_once(SAYFA.$sayfa); // tODO
-  }
-  else{
-    include_once(SAYFA."home.php");
-  }
+    $sayfa=$_GET["sayfa"].".php";//ornek.php olacak ornek dediğimiz için 
+    
+    if(file_exists(SAYFA.$sayfa)){
+        include_once(SAYFA.$sayfa); // tODO
+      }
+    else{
+        include_once(SAYFA."home.php");
+      }
 }
 else{
   include_once(SAYFA."home.php");
