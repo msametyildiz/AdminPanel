@@ -57,10 +57,14 @@
                           ?>
                               <tr>
                                   <td><?=$sira?></td>
-                                  <td><?php echo stripslashes($veriler[$i]["baslik"]); ?></td>
+                                    <td><?php
+                                       echo stripslashes($veriler[$i]["baslik"]); //stripslashes -->html taglarını temizlemiyor
+                                       echo '<br/>'.mb_substr(strip_tags(stripslashes($veriler[$i]["metin"])),0,130,"UTF-8")."...";/*strip_tags -> html taglarını temizliyor*/?></td>
                                   <td>-</td>
                                   <td><?=$veriler[$i]["tarih"]?></td>
-                                  <td>-</td>
+                                  <td>
+                                    <a href="<?=SITE?>duzenle/<?=$kontrol[0]["tablo"]?>/<?=$veriler[$i]["ID"]?>" class="btn btn-warning btn-sm">Düzenle</a>
+                                  </td>
                               </tr>
                           <?php
                         }
