@@ -1,8 +1,11 @@
 <?php 
-  if(!empty($_GET["tablo"])){
+  if(!empty($_GET["tablo"]) && !empty($_GET["ID"])){
     $tablo=$VT->filter($_GET["tablo"]);
+    $ID=$VT->filter($_GET["ID"]);
     $kontrol=$VT->VeriGetir("moduller","WHERE tablo=? AND durum=?",array($tablo,1),"ORDER BY ID ASC",1);
     if($kontrol!=false){
+        $veri=$VT->VeriGetir($kontrol[0]["tablo"],"WHERE ID=?",array($ID),"ORDER BY ID ASC",1);
+        if($veri!=false){
 ?>
 
 
@@ -12,7 +15,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0"><?=$kontrol[0]["baslik"]?></h1>
+            <h1 class="m-0"><?=$kontrol[0]["baslik"]?> Düzenleme Sayfası</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -47,7 +50,7 @@ if($_POST){
             if(!empty($_FILES["resim"]["name"])){
                   $yukle=$VT->upload("resim","../images/".$kontrol[0]["tablo"]."/");
                   if($yukle!=false){
-                      $ekle=$VT->SorguCalistir("INSERT INTO ".$kontrol[0]["tablo"],"SET baslik=?, selflink=?, kategori=?, metin=?, resim=?, anahtar=?, description=?, durum=?,sirano=?,tarih=?",array($baslik,$selflink,$kategori,$metin,$yukle,$anahtar,$description,1,$sirano,date("Y-m-d")));
+                      $ekle=$VT->SorguCalistir("UPDATE ".$kontrol[0]["tablo"],"SET baslik=?, selflink=?, kategori=?, metin=?, resim=?, anahtar=?, description=?, durum=?,sirano=?,tarih=? WHERE ID=?",array($baslik,$selflink,$kategori,$metin,$yukle,$anahtar,$description,1,$sirano,date("Y-m-d"),$veri[0]["ID"]));
                   }
                   else{
                       ?>
@@ -57,9 +60,10 @@ if($_POST){
               
             }
             else{
-                  $ekle=$VT->SorguCalistir("INSERT INTO ".$kontrol[0]["tablo"],"SET baslik=?, selflink=?, kategori=?, metin=?, anahtar=?, description=?, durum=?, sirano=?, tarih=?",array($baslik,$selflink,$kategori,$metin,$anahtar,$description,1,$sirano,date("Y-m-d")));
+                  $ekle=$VT->SorguCalistir("UPDATE ".$kontrol[0]["tablo"],"SET baslik=?, selflink=?, kategori=?, metin=?, anahtar=?, description=?, durum=?, sirano=?, tarih=? WHERE ID=?",array($baslik,$selflink,$kategori,$metin,$anahtar,$description,1,$sirano,date("Y-m-d"), $veri[0]["ID"]));
             }
             if($ekle!=false){
+                $veri=$VT->VeriGetir($kontrol[0]["tablo"],"WHERE ID=?",array($veri[0]["ID"]),"ORDER BY ID ASC",1);
                   ?>
                     <div class="alert alert-success">İŞLEMLER BAŞARIYLA KAYDEDİLDİ ...</div>
                   <?php
@@ -90,7 +94,7 @@ if($_POST){
                   <select class="form-control select2" style="width: 100%;" name="kategori">
                   
                     <?php
-                      $sonuc=$VT->kategoriGetir($kontrol[0]["tablo"],"",-1);
+                      $sonuc=$VT->kategoriGetir($kontrol[0]["tablo"],$veri[0]["kategori"],-1);
                       if($sonuc!=false){
                         echo $sonuc;
                       }
@@ -108,28 +112,30 @@ if($_POST){
                 <div class="col-md-12">
                     <div class="form-group">
                       <label>Başlık</label>
-                      <input type="text" class="form-control" placeholder="Başlık ..." name="baslik">
+                      <input type="text" class="form-control" placeholder="Başlık ..." name="baslik" value="<?=stripslashes($veri[0]["baslik"])?>">
                     </div>
                 </div>
                 <!-- Text area-->
                 <div class="col-md-12">
                     <div class="form-group">
                       <label>Açıklama</label>
-                      <textarea id="summernote" name="metin" placeholder="  Text Area  " style="width:100%; height:450px; line-height:18px; font-size:14px; border:1px solid #dddddd; padding:10px;"></textarea>
+                         <textarea id="summernote" name="metin" placeholder="  Text Area  " style="width:100%; height:450px; line-height:18px; font-size:14px; border:1px solid #dddddd; padding:10px;">
+                                <?=stripslashes($veri[0]["metin"])?>
+                        </textarea>
                     </div>
                 </div>
                  <!--keywords  -->
                 <div class="col-md-12">
                     <div class="form-group">
                       <label>Anahtar Kelimeler</label>
-                      <input type="text" class="form-control" placeholder="Anahtar Kelimeler ..." name="anahtar">
+                      <input type="text" class="form-control" placeholder="Anahtar Kelimeler ..." name="anahtar" value="<?=stripslashes($veri[0]["anahtar"])?>">
                     </div>
                 </div>
                 <!--description  -->
                 <div class="col-md-12">
                     <div class="form-group">
                       <label>Description</label>
-                      <input type="text" class="form-control" placeholder="Description ..." name="description">
+                      <input type="text" class="form-control" placeholder="Description ..." name="description" value="<?=stripslashes($veri[0]["description"])?>"> 
                     </div>
                 </div>
                 <!--pictures  -->
@@ -143,7 +149,7 @@ if($_POST){
                 <div class="col-md-12">
                     <div class="form-group">
                       <label>Sıra no</label>
-                      <input type="number" class="form-control" placeholder="Sıra No ..." name="sirano" style="width:100px;">
+                      <input type="number" class="form-control" placeholder="Sıra No ..." name="sirano" style="width:100px;" value="<?=stripslashes($veri[0]["sirano"])?>">
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -170,6 +176,12 @@ if($_POST){
   
   
   <?php
+        }
+        else{
+            ?>
+      <meta http-equiv="refresh" content="0;url=<?=SITE?>liste/<?=$kontrol[0]["tablo"]?>">
+      <?php
+        }
   }
     else{
       ?>
