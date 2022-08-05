@@ -50,7 +50,7 @@
 <!-----------------------------------------------------------PHP---------------------------------------------------------------------------> 
                     <?php
                       $veriler=$VT->VeriGetir($kontrol[0]["tablo"],"","","ORDER BY ID ASC");
-                      if($veriler!=false){
+                      if($veriler!=false){ 
                         $sira=0;
                         for($i=0;$i<count($veriler);$i++){
                           $sira++;
