@@ -180,6 +180,11 @@ include_once(DATA."footer.php");
       theme: 'bootstrap4'
     })  
   }) 
+
+  function aktifpasif(ID,tablo){
+    alert(ıd+" "+tablo);
+  }
+
 </script>
 
 
