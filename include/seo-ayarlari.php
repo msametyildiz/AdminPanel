@@ -24,32 +24,15 @@
 <!----------------------------------------------------------------------------------------------------------------------------------->
 <?php 
 if($_POST){
-      if(!empty($_POST["kategori"]) && !empty($_POST["baslik"]) && !empty($_POST["anahtar"]) && !empty($_POST["description"]) && !empty($_POST["sirano"])){
-            $kategori=$VT->filter($_POST["kategori"]);
+      if(!empty($_POST["baslik"]) && !empty($_POST["anahtar"]) && !empty($_POST["description"])){
             $baslik=$VT->filter($_POST["baslik"]);
             $anahtar=$VT->filter($_POST["anahtar"]);
-            $selflink=$VT->selflink($baslik);
             $description=$VT->filter($_POST["description"]);
-            $sirano=$VT->filter($_POST["sirano"]);
-            $metin=$VT->filter($_POST["metin"],true);//true yazılmasının sebebi editor kullnıldığı için html komutlarını temizlemesini istemiyorum
-            if(!empty($_FILES["resim"]["name"])){
-                  $yukle=$VT->upload("resim","../images/".$kontrol[0]["tablo"]."/");
-                  if($yukle!=false){
-                      $ekle=$VT->SorguCalistir("INSERT INTO ".$kontrol[0]["tablo"],"SET baslik=?, selflink=?, kategori=?, metin=?, resim=?, anahtar=?, description=?, durum=?,sirano=?,tarih=?",array($baslik,$selflink,$kategori,$metin,$yukle,$anahtar,$description,1,$sirano,date("Y-m-d")));
-                  }
-                  else{
-                      ?>
-                      <div class="alert alert-info">! RESİM YÜKLEME İŞLEMİNİZ BAŞARISIZ !</div>
-                      <?php
-                  }
-              
-            }
-            else{
-                  $ekle=$VT->SorguCalistir("INSERT INTO ".$kontrol[0]["tablo"],"SET baslik=?, selflink=?, kategori=?, metin=?, anahtar=?, description=?, durum=?, sirano=?, tarih=?",array($baslik,$selflink,$kategori,$metin,$anahtar,$description,1,$sirano,date("Y-m-d")));
-            }
-            if($ekle!=false){
+            $guncelle=$VT->SorguCalistir("UPDATE ayarlar","SET baslik=?, anahtar=?, aciklama=?, WHERE ID=?",array($baslik,$anahtar,$description,1),1);
+            if($guncelle!=false){
                   ?>
                     <div class="alert alert-success">İŞLEMLER BAŞARIYLA KAYDEDİLDİ ...</div>
+                    <meta http-equiv="refresh" content="2;url=<?=SITE?>seo-ayarlari"/>
                   <?php
             }
             else{
@@ -77,48 +60,29 @@ if($_POST){
                 <!-- header in form -->
                 <div class="col-md-12">
                     <div class="form-group">
-                      <label>Başlık</label>
-                      <input type="text" class="form-control" placeholder="Başlık ..." name="baslik">
+                      <label>Site Başlık</label>
+                      <input type="text" class="form-control" placeholder="Site Başlık ..." name="baslik" value="<?=$sitebaslik?>">
                     </div>
                 </div>
-                <!-- Text area-->
-                <div class="col-md-12">
-                    <div class="form-group">
-                      <label>Açıklama</label>
-                      <textarea id="summernote" name="metin" placeholder="  Text Area  " style="width:100%; height:450px; line-height:18px; font-size:14px; border:1px solid #dddddd; padding:10px;"></textarea>
-                    </div>
-                </div>
+                
                  <!--keywords  -->
                 <div class="col-md-12">
                     <div class="form-group">
                       <label>Anahtar Kelimeler</label>
-                      <input type="text" class="form-control" placeholder="Anahtar Kelimeler ..." name="anahtar">
+                      <input type="text" class="form-control" placeholder="Anahtar Kelimeler ..." name="anahtar" value="<?=$siteanahtar?>">
                     </div>
                 </div>
                 <!--description  -->
                 <div class="col-md-12">
                     <div class="form-group">
                       <label>Description</label>
-                      <input type="text" class="form-control" placeholder="Description ..." name="description">
+                      <input type="text" class="form-control" placeholder="Description ..." name="description" value="<?=$siteaciklama?>">
                     </div>
                 </div>
-                <!--pictures  -->
+                <!--button  -->
                 <div class="col-md-12">
                     <div class="form-group">
-                      <label>Resimler</label>
-                      <input type="file" class="form-control" placeholder="Resim Seçiniz ..." name="resim">
-                    </div>
-                </div>
-                <!--Serial no  -->
-                <div class="col-md-12">
-                    <div class="form-group">
-                      <label>Sıra no</label>
-                      <input type="number" class="form-control" placeholder="Sıra No ..." name="sirano" style="width:100px;">
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-block btn-primary">KAYDET</button>
+                        <button type="submit" class="btn btn-block btn-primary">Güncelle</button>
                     </div>
                 </div>
                 <!-- /.row -->

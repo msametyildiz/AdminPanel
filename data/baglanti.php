@@ -6,7 +6,7 @@ $ayarlar=$VT->VeriGetir("ayarlar","WHERE ID=?",array(1),"ORDER BY ID ASC",1);
 
 if ($ayarlar!=false) {
 	$sitebaslik=$ayarlar[0]["baslik"] ;
-	$siteanahtar=$ayarlar[0]["anahtarkelime"] ;
+	$siteanahtar=$ayarlar[0]["anahtar"] ;
 	$siteaciklama=$ayarlar[0]["aciklama"] ;
 	$siteURL=$ayarlar[0]["url"];
 }
