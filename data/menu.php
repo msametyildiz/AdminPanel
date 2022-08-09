@@ -78,7 +78,16 @@
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Seo Ayarları
-                <span class="right badge badge-danger">New</span>
+                <span class="right badge badge-danger"></span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?=SITE?>iletisim-ayarlari" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                İletişim Ayarları
+                <span class="right badge badge-danger"></span>
               </p>
             </a>
           </li>
