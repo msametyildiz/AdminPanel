@@ -86,7 +86,6 @@ if($_POST){
                     </div>
                 </div>
                 <!-- /.row -->
-
           </div>
           <!-- /.card-body -->
           
