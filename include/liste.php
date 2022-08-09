@@ -63,7 +63,7 @@
                                        echo '<br/>'.mb_substr(strip_tags(stripslashes($veriler[$i]["metin"])),0,130,"UTF-8")."...";/*strip_tags -> html taglarını temizliyor*/?></td>
                                   <td>
                                       <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                                      <input type="checkbox" class="custom-control-input aktifpasif" id="customSwitch3"<?=$aktifpasif?>  value="<?=$veriler[$i]["ID"]?>"> onclick="aktifpasif(<?=$veriler[$i]["ID"]?>,'<?=$kontrol[0]["tablo"]?>')"; >
+                                      <input type="checkbox" class="custom-control-input aktifpasif" id="customSwitch3"<?=$aktifpasif?>  value="<?=$veriler[$i]["ID"]?>" onclick="aktifpasif(<?=$veriler[$i]['ID']?>,'<?=$kontrol[0]['tablo']?>')"; >
                                           <label class="custom-control-label" for="customSwitch3"></label>
                                     </div>
                                   </td>

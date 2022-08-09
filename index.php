@@ -182,12 +182,29 @@ include_once(DATA."footer.php");
   }) 
 
   function aktifpasif(ID,tablo){
-    alert(ıd+" "+tablo);
+    var durum=0;
+    if($(".aktifpasif"+ID).is('checked')){
+      durum=1;
+    }
+    else{
+      durum=2;
+    }
+    $.ajax({
+      method:"POST",
+      url:"<?=SITE?>ajax.php",
+      data:{"tablo":tablo,"ID":ID,"durum":durum},
+      success: function(sonuc){
+        if(sonuc=="TAMAM"){
+
+        }
+        else{
+          alert("İŞLEMİNİZ SUAN GEÇERSİZDİR. LÜTFEN DAHA SONRA TEKRAR DENEYİNİZ...");
+        }
+      }
+    });
   }
 
 </script>
-
-
 
 </body>
 </html>
