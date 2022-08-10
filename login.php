@@ -6,7 +6,16 @@ define("SAYFA","include/");
 define("SINIF","class/");
 include_once(DATA."baglanti.php");
 define("SITE", $siteURL);
+
+if(!empty($_SESSION["ID"]) && !empty($_SESSION["adsoyad"]) && !empty($_SESSION["mail"])){
+    ?>
+    <meta http-equiv="refresh" content="0,url=<?=SITE?>giris-yap"/>
+    <?php
+    exit();
+}
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -40,7 +49,32 @@ define("SITE", $siteURL);
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Giriş Yapmak İçin Lütfen Bilgileri Doldurunuz.</p>
+    <?php
+        if($_POST){
+          if(!empty($_POST["kullanici"]) && !empty($_POST["sifre"])){
+            $kullanici=$VT->filter($_POST["kullanici"]);
+            $sifre=md5($VT->filter($_POST["sifre"]));
+            $kontrol=$VT->VeriGetir("kullanicilar","WHERE kullanici=? AND sifre=?", array($kullanici,$sifre),"ORDER BY ID ASC",1);
+            if($kontrol!=false){
+              $_SESSION["kullanici"]=$kontrol[0]["kullanici"];
+              $_SESSION["adsoyad"]=$kontrol[0]["adsoyad"];
+              $_SESSION["mail"]=$kontrol[0]["mail"];
+              $_SESSION["ID"]=$kontrol[0]["ID"];
+              ?>
+                  <meta http-equiv="refresh" content="0,url=<?=SITE?>"/>
+              <?php
+              exit();
+            } 
+            else{
+              echo '<div class="alert alert-danger">Kullanıcı adı ve ya şifre hatalı.</div>';
+            }
 
+          }
+          else{
+            echo '<div class="alert alert-danger">Boş Bırakılan Alanları Doldurunuz.</div>';
+          }
+        }
+    ?>
       <form action="#" method="post">
         <div class="input-group mb-3">
           <input type="text" name="kullanici" class="form-control" placeholder="Kullanıcı Adınız">

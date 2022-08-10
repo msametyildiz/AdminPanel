@@ -6,6 +6,15 @@ define("SAYFA","include/");
 define("SINIF","class/");
 include_once(DATA."baglanti.php");
 define("SITE", $siteURL);
+if(!empty($_SESSION["ID"]) && !empty($_SESSION["adsoyad"]) && !empty($_SESSION["mail"])){
+
+}
+else{
+  ?>
+  <meta http-equiv="refresh" content="0,url=<?=SITE?>giris-yap"/>
+  <?php
+  exit();
+}
 ?>
 
 
