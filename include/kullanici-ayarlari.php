@@ -1,5 +1,3 @@
-
-
 <div class="content-wrapper">
 <!-- Content Header (Page header) -->
 <div class="content-header">
@@ -31,9 +29,9 @@ if($_POST){
         $userpassword=$VT->filter($_POST["sifre"]);
         $usermail=$VT->filter($_POST["mail"]);
         if(!empty($_FILES["resim"]["name"])){
-            $picyukle=$VT->upload("resim","userimages/".$kontrol[0]["tablo"]."/");
+            $picyukle=$VT->upload("resim","userimages/");
             if($picyukle!=false){
-                $ekleuser=$VT->SorguCalistir("INSERT INTO kullanicilar","SET adsoyad=?, kullanici=?, sifre=?, mail=? resim=? tarih=?",array($usernamelastname,$username,$userpassword,$usermail,$picyukle,date("Y-m-d")));
+                $ekleuser="INSERT INTO 'kullanicilar' ('adsoyad', 'resim', 'kullanici', 'sifre', 'mail') VALUES ($usernamelastname, $picyukle, $username, $userpassword, $usermail)";
             }
             else{
                 ?>
@@ -42,7 +40,7 @@ if($_POST){
             }
          }
         else{
-            $ekleuser=$VT->SorguCalistir("INSERT INTO kullanicilar","SET adsoyad=?, kullanici=?, sifre=?, mail=? tarih=?",array($usernamelastname,$username,$userpassword,$usermail,date("Y-m-d")));
+          $ekleuser="INSERT INTO kullanicilar ('adsoyad', 'kullanici', 'sifre', 'mail') VALUES ($usernamelastname, $username, $userpassword, $usermail)";
         }
          if($ekleuser!=false){
             ?>
@@ -134,3 +132,4 @@ if($_POST){
 </section>
 <!-- /.content -->
 </div>
+
