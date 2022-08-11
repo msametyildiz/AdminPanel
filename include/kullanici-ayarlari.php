@@ -1,4 +1,5 @@
 
+
 <div class="content-wrapper">
 <!-- Content Header (Page header) -->
 <div class="content-header">
@@ -32,7 +33,7 @@ if($_POST){
         if(!empty($_FILES["resim"]["name"])){
             $picyukle=$VT->upload("resim","userimages/".$kontrol[0]["tablo"]."/");
             if($picyukle!=false){
-                $ekleuser=$VT->SorguCalistir("INSERT INTO ".$kontrol[0]["tablo"],"SET adsoyad=?, kullanici=?, sifre=?, mail=? resim=? WHERE ID=?",array($usernamelastname,$username,$userpassword,$usermail,$picyukle,date("Y-m-d")));
+                $ekleuser=$VT->SorguCalistir("INSERT INTO kullanicilar","SET adsoyad=?, kullanici=?, sifre=?, mail=? resim=? tarih=?",array($usernamelastname,$username,$userpassword,$usermail,$picyukle,date("Y-m-d")));
             }
             else{
                 ?>
@@ -41,8 +42,8 @@ if($_POST){
             }
          }
         else{
-        $ekleuser=$VT->SorguCalistir("INSERT INTO ".$kontrol[0]["tablo"],"SET adsoyad=?, kullanici=?, sifre=?, mail=? WHERE ID=?",array($usernamelastname,$username,$userpassword,$usermail,date("Y-m-d")));
-         }
+            $ekleuser=$VT->SorguCalistir("INSERT INTO kullanicilar","SET adsoyad=?, kullanici=?, sifre=?, mail=? tarih=?",array($usernamelastname,$username,$userpassword,$usermail,date("Y-m-d")));
+        }
          if($ekleuser!=false){
             ?>
               <div class="alert alert-success">İŞLEMLER BAŞARIYLA KAYDEDİLDİ ...</div>
@@ -69,8 +70,6 @@ if($_POST){
       <div class="col-md-8">
       <div class="card-body card card-primary">
         <div class="row">
-          
-
             <!-- user-namelastname -->
             <div class="col-md-12">
                 <div class="form-group">
@@ -90,14 +89,14 @@ if($_POST){
             <div class="col-md-12">
                 <div class="form-group">
                   <label>Sifre</label>
-                  <input type="text" class="form-control" placeholder="Şifre ..." name="sifre">
+                  <input type="password" class="form-control" placeholder="Şifre ..." name="sifre">
                 </div>
             </div>
             <!--confirm-password  -->
             <div class="col-md-12">
                 <div class="form-group">
                   <label>Sifre Kontrol</label>
-                  <input type="text" class="form-control" placeholder="Şifre ..." name="kontrolsifre">
+                  <input type="password" class="form-control" placeholder="Şifre ..." name="kontrolsifre">
                 </div>
             </div>
             <!--user-mail  -->
