@@ -91,6 +91,17 @@
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="<?=SITE?>kullanici-ayarlari" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Kullanıcılar
+                <span class="right badge badge-danger"></span>
+              </p>
+            </a>
+          </li>
+
           <li class="nav-item">
             <a href="<?=SITE?>cikis" class="nav-link">
             <i class="nav-icon fas fa-th"></i>
