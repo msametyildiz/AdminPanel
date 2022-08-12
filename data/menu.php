@@ -46,9 +46,9 @@
 
 
 
-          <li class="nav-item menu-open">
+          <li class="nav-item ">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-th"></i>
               <p>
                 Sayfalar
                 <i class="right fas fa-angle-left"></i>
@@ -69,8 +69,7 @@
                       <?php
                     }
                   }
-               ?>
-              
+               ?> 
             </ul>
           </li>
           <li class="nav-item">
