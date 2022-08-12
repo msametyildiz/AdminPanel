@@ -10,10 +10,10 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
+        <div class="image" style="padding:12px 0px 0px 0px">
           <img src="<?=SITE?>dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
-        <div class="info">
+        <div class="info" style="padding-top:12px">
           <a href="#" class="d-block"><?=$_SESSION["adsoyad"]?></a>
         </div>
       </div>
@@ -85,7 +85,7 @@
             <a href="<?=SITE?>iletisim-ayarlari" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                İletişim Ayarları
+                Iletişim Ayarları
                 <span class="right badge badge-danger"></span>
               </p>
             </a>

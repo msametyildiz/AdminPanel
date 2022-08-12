@@ -41,7 +41,7 @@ if($_POST){
             }
          }
         else{
-          $ekleuser=$VT->SorguCalistir("INSERT INTO kullanicilar (adsoyad, kullanici, sifre, mail) VALUES ('$usernamelastname','$username',MD5('$userpassword'),'$usermail')");
+          $ekleuser=$VT->SorguCalistir("INSERT INTO 'kullanicilar' (`adsoyad`, `kullanici`, `sifre`, `mail`) VALUES ('$usernamelastname','$username',MD5('$userpassword'),'$usermail')");
         }
          if($ekleuser!=false){
             ?>
