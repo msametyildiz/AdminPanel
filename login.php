@@ -40,8 +40,8 @@ if(!empty($_SESSION["ID"]) && !empty($_SESSION["adsoyad"]) && !empty($_SESSION["
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
+<body class="hold-transition login-page" style="background-image:url('dist/img/panel-background-pic.jpg');background-size: cover;">
+<div class="login-box" style="border:2px double #b3ccff;">
   <div class="login-logo">
     <a href="<?=SITE?>"><b>Admin</b>Paneli</a>
   </div>
